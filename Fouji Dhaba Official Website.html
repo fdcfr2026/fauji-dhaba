@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fouji Dhaba Cum Family Restaurant - फ़ौजी ढाबा (Dalkhola)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#8B0000',
+                            saffron: '#D97706',
+                            gold: '#F59E0B',
+                            dark: '#1C1917',
+                            cream: '#FFFBEB',
+                            green: '#15803D'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Rozha One', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans flex flex-col min-h-screen">
+
+    <!-- Top Announcement / Quick Contact Bar -->
+    <div class="bg-brand-red text-white py-2 px-4 text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <a href="tel:9162232616" class="hover:text-brand-gold transition flex items-center gap-1 font-semibold">
+                    <i class="fa-solid fa-phone text-brand-gold"></i> +91 9162232616 / 9199643451
+                </a>
+                <span class="hidden md:inline text-amber-200">|</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-envelope text-brand-gold mr-1"></i> faujidhabahotel@gmail.com</span>
+            </div>
+            <div class="flex items-center space-x-3 text-xs">
+                <span class="bg-brand-saffron/30 px-2 py-0.5 rounded border border-brand-gold/40 text-brand-gold font-medium">
+                    <i class="fa-solid fa-utensils mr-1"></i> Daulatpur, NH-27 Dalkhola
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-brand-gold text-2xl shadow-lg border-2 border-brand-gold transform group-hover:rotate-6 transition">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div>
+                    <h1 class="font-heading text-2xl sm:text-3xl text-brand-red tracking-wide leading-tight">
+                        Fouji Dhaba <span class="text-xs font-sans text-amber-700 block sm:inline font-bold">फ़ौजी ढाबा</span>
+                    </h1>
+                    <p class="text-[10px] sm:text-xs text-brand-saffron font-bold tracking-widest uppercase">Cum Family Restaurant</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-6 font-medium text-gray-700 text-sm">
+                <a href="#hero" class="hover:text-brand-red transition">Home / होम</a>
+                <a href="#menu" class="hover:text-brand-red transition">Menu / मेनू कार्ड</a>
+                <a href="#location" class="hover:text-brand-red transition">Location / लोकेशन</a>
+                <a href="#booking" class="hover:text-brand-red transition">Table Booking / बुकिंग</a>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="tel:9162232616" class="bg-brand-red hover:bg-red-800 text-white px-3.5 py-2 rounded-lg font-semibold text-xs sm:text-sm shadow-md transition flex items-center">
+                    <i class="fa-solid fa-phone mr-1.5 text-brand-gold"></i> Call Now
+                </a>
+                <a href="#booking" class="hidden sm:inline-flex items-center bg-brand-saffron hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm shadow-md transition">
+                    <i class="fa-solid fa-calendar-check mr-1.5"></i> Book Table
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-brand-dark focus:outline-none p-1">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-amber-100 px-4 py-3 space-y-3 shadow-lg">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block py-1 font-medium hover:text-brand-red">Home (होम)</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block py-1 font-medium hover:text-brand-red">Full Menu (मेनू कार्ड)</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block py-1 font-medium hover:text-brand-red">Location & Contact (पता व संपर्क)</a>
+            <a href="#booking" onclick="toggleMobileMenu()" class="block py-1 font-medium hover:text-brand-red">Book Table (टेबल बुक करें)</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative bg-brand-dark text-white py-16 lg:py-24 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center" 
+             style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80');">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-brand-dark/90 to-transparent z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-2 gap-10 items-center">
+            <div class="space-y-6">
+                <span class="inline-block bg-brand-saffron/20 border border-brand-gold text-brand-gold font-semibold text-xs sm:text-sm px-4 py-1.5 rounded-full tracking-wide">
+                    ✨ GOOD FOOD • GOOD MOOD • GREAT TIMES
+                </span>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight text-amber-50">
+                    Fouji Dhaba <br>
+                    <span class="text-brand-gold">फ़ौजी ढाबा</span>
+                </h1>
+                <p class="text-amber-100/90 text-sm sm:text-base max-w-xl leading-relaxed">
+                    Welcome to <strong>Fouji Dhaba Cum Family Restaurant</strong> at NH-27, Dalkhola! Enjoy authentic Thalis, Tandoori Starters, Biryani & Chinese Delicacies with pure taste and hygienic family seating.
+                    <br>
+                    <span class="text-xs text-gray-300 italic mt-1 block">दौलतपुर NH-27 (पेट्रोल पंप के सामने), दालखोला में आपका हार्दिक स्वागत है!</span>
+                </p>
+                
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <a href="#menu" class="bg-brand-red hover:bg-red-800 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center text-sm">
+                        <i class="fa-solid fa-book-open mr-2"></i> View Full Menu / मेनू देखें
+                    </a>
+                    <a href="https://maps.google.com/?q=Daulatpur+NH-27+Opposite+petrol+Pump+Dalkhola+Uttar+Dinajpur" target="_blank" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold px-5 py-3.5 rounded-xl transition flex items-center text-sm">
+                        <i class="fa-solid fa-location-dot mr-2 text-brand-gold"></i> Get Directions / गूगल मैप्स
+                    </a>
+                </div>
+
+                <!-- Contact & Timing Highlights -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-6 border-t border-white/10 text-center">
+                    <div class="p-2 bg-white/5 rounded-lg">
+                        <p class="text-lg font-bold text-brand-gold"><i class="fa-solid fa-phone"></i> 9162232616</p>
+                        <p class="text-[11px] text-gray-300">Quick Contact / फोन करें</p>
+                    </div>
+                    <div class="p-2 bg-white/5 rounded-lg">
+                        <p class="text-lg font-bold text-brand-gold"><i class="fa-solid fa-utensils"></i> 100% Fresh</p>
+                        <p class="text-[11px] text-gray-300">Pure & Hygienic Food</p>
+                    </div>
+                    <div class="p-2 bg-white/5 rounded-lg col-span-2 sm:col-span-1">
+                        <p class="text-lg font-bold text-brand-gold"><i class="fa-solid fa-road"></i> NH-27 Dalkhola</p>
+                        <p class="text-[11px] text-gray-300">Opposite Petrol Pump</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Banner Image Card -->
+            <div class="relative hidden md:block">
+                <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-brand-saffron/40">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80" 
+                         alt="Indian Thali Food" 
+                         class="w-full h-[420px] object-cover hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/800x500/8B0000/FFFFFF?text=Fouji+Dhabha+Special+Thali'">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
+                        <span class="bg-brand-red text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded mb-1 inline-block">Popular Choice</span>
+                        <p class="text-brand-gold font-heading text-xl">Special Veg & Non-Veg Thalis</p>
+                        <p class="text-xs text-gray-200">स्पेशल थाली, तंदूरी स्टार्टर्स और स्वादिष्ट बिरयानी</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN MENU SECTION WITH FULL DUAL-LANGUAGE DATA -->
+    <section id="menu" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-widest text-brand-saffron font-bold">DIGITAL MENU CARD / डिजिटल मेनू</span>
+                <h2 class="text-3xl sm:text-4xl font-heading text-brand-red font-bold mt-1">Our Complete Menu / हमारा संपूर्ण मेनू</h2>
+                <p class="text-gray-600 text-xs sm:text-sm mt-1">सभी व्यंजन हिंदी और अंग्रेजी दोनों नामों और सटीक दामों के साथ दिए गए हैं</p>
+            </div>
+
+            <!-- Search & Filter Controls Bar -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-amber-50 p-4 rounded-2xl border border-amber-200">
+                <!-- Search Input -->
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400"></i>
+                    <input type="text" id="menuSearch" oninput="renderMenu()" placeholder="Search dish (e.g. Biryani, पनीर, Roti)..." 
+                           class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-saffron shadow-sm">
+                </div>
+
+                <!-- Veg / Non-Veg Type Quick Filter -->
+                <div class="flex items-center space-x-2 w-full md:w-auto justify-center">
+                    <button onclick="setTypeFilter('all')" id="type-all" class="type-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-dark text-white shadow transition">
+                        All Items (सभी)
+                    </button>
+                    <button onclick="setTypeFilter('veg')" id="type-veg" class="type-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-green-700 border border-green-300 hover:bg-green-50 transition flex items-center">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-600 inline-block mr-1.5"></span> Veg Only
+                    </button>
+                    <button onclick="setTypeFilter('nonveg')" id="type-nonveg" class="type-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-red-700 border border-red-300 hover:bg-red-50 transition flex items-center">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-600 inline-block mr-1.5"></span> Non-Veg
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Category Buttons -->
+            <div class="flex items-center space-x-2 overflow-x-auto pb-4 custom-scrollbar mb-8">
+                <button onclick="setCategory('all')" id="cat-all" class="cat-btn bg-brand-red text-white px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap shadow transition">
+                    All Categories
+                </button>
+                <button onclick="setCategory('breakfast')" id="cat-breakfast" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    01. Breakfast (नाश्ता)
+                </button>
+                <button onclick="setCategory('veg_starters')" id="cat-veg_starters" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    02. Veg Starters
+                </button>
+                <button onclick="setCategory('daily_dal')" id="cat-daily_dal" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    03. Daily Dal (दाल)
+                </button>
+                <button onclick="setCategory('beverages')" id="cat-beverages" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    04. Beverages (पेय)
+                </button>
+                <button onclick="setCategory('nonveg_starters')" id="cat-nonveg_starters" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    05. Non-Veg Starters
+                </button>
+                <button onclick="setCategory('tandoori_starters')" id="cat-tandoori_starters" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    06. Tandoori Starters
+                </button>
+                <button onclick="setCategory('veg_main')" id="cat-veg_main" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    07. Veg Main Course
+                </button>
+                <button onclick="setCategory('nonveg_tandoori')" id="cat-nonveg_tandoori" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    08. Non-Veg Tandoori
+                </button>
+                <button onclick="setCategory('chicken_specials')" id="cat-chicken_specials" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    12. Chicken Specials
+                </button>
+                <button onclick="setCategory('fast_foods')" id="cat-fast_foods" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    13. Fast Foods (फास्ट फूड)
+                </button>
+                <button onclick="setCategory('soups')" id="cat-soups" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    14. Veg Soups (सूप)
+                </button>
+                <button onclick="setCategory('salad_papad')" id="cat-salad_papad" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    15. Salad & Papad
+                </button>
+                <button onclick="setCategory('rice_biryani')" id="cat-rice_biryani" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    16. Rice & Biryani
+                </button>
+                <button onclick="setCategory('thali')" id="cat-thali" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    17. Special Thali (थाली)
+                </button>
+                <button onclick="setCategory('breads')" id="cat-breads" class="cat-btn bg-gray-100 hover:bg-amber-100 text-gray-800 px-4 py-2 rounded-full font-medium text-xs sm:text-sm whitespace-nowrap transition">
+                    18. Indian Breads (रोटी)
+                </button>
+            </div>
+
+            <!-- Dynamic Menu Render Container -->
+            <div id="menuContainer" class="space-y-10">
+                <!-- Menu sections rendered via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & CONTACT SECTION -->
+    <section id="location" class="py-16 bg-brand-cream border-t border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest text-brand-saffron font-bold">LOCATION & CONTACT / लोकेशन और संपर्क</span>
+                <h2 class="text-3xl sm:text-4xl font-heading text-brand-red font-bold mt-1">Visit Fouji Dhaba / हमसे संपर्क करें</h2>
+                <p class="text-gray-600 text-sm mt-1">दौलतपुर, नेशनल हाईवे-27 (पेट्रोल पंप के सामने), दालखोला</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Location Info Card -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-amber-200 flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-3 border-b border-gray-100 pb-4 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-red text-brand-gold flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-map-pin"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">Address / पता</h3>
+                                <p class="text-xs text-brand-saffron font-semibold">Fouji Dhaba Hotel</p>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong>Daulatpur, NH-27</strong>, Opposite Petrol Pump, Dalkhola, Uttar Dinajpur, West Bengal - 733201
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-gray-100">
+                        <div class="flex items-center space-x-3 text-gray-800">
+                            <i class="fa-solid fa-phone text-brand-saffron text-lg w-6"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Phone Numbers:</p>
+                                <a href="tel:9162232616" class="font-bold text-brand-red hover:underline block text-sm">+91 9162232616</a>
+                                <a href="tel:9199643451" class="font-bold text-brand-red hover:underline block text-sm">+91 9199643451</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 text-gray-800">
+                            <i class="fa-solid fa-envelope text-brand-saffron text-lg w-6"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Email Address:</p>
+                                <a href="mailto:faujidhabahotel@gmail.com" class="font-medium text-gray-800 hover:text-brand-red text-xs sm:text-sm">faujidhabahotel@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="tel:9162232616" class="w-full bg-brand-red hover:bg-red-800 text-white font-bold py-3 rounded-xl text-center text-sm shadow transition flex items-center justify-center">
+                            <i class="fa-solid fa-phone mr-2"></i> Call For Booking / अभी कॉल करें
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps iFrame Card -->
+                <div class="lg:col-span-2 bg-white rounded-2xl shadow-lg overflow-hidden border border-amber-200 flex flex-col min-h-[350px]">
+                    <div class="bg-gray-100 flex-grow relative">
+                        <iframe 
+                            title="Fouji Dhaba Dalkhola Map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14352.5489851608!2d87.8400!3d25.8500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e530b1b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sDalkhola%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            class="w-full h-full absolute inset-0 border-0" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="p-4 bg-gray-50 flex flex-wrap justify-between items-center text-xs text-gray-600 gap-2 border-t border-gray-200">
+                        <span><i class="fa-solid fa-square-parking text-brand-saffron mr-1"></i> Car & Highway Parking</span>
+                        <span><i class="fa-solid fa-snowflake text-brand-saffron mr-1"></i> Family AC Seating Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABLE / CATERING BOOKING FORM -->
+    <section id="booking" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="bg-gradient-to-br from-brand-red to-red-950 rounded-3xl shadow-2xl p-6 sm:p-10 text-white relative overflow-hidden">
+                <div class="relative z-10 text-center max-w-xl mx-auto mb-8">
+                    <span class="bg-brand-gold text-brand-dark font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">RESERVATION / बुकिंग</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold mt-2">Book a Table / टेबल बुक करें</h2>
+                    <p class="text-amber-100 text-xs sm:text-sm mt-1">अपने परिवार या दोस्तों के लिए अग्रिम बुकिंग करें।</p>
+                </div>
+
+                <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="relative z-10 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-amber-200 mb-1">Your Name / आपका नाम *</label>
+                            <input type="text" required placeholder="Name" 
+                                   class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-amber-200 mb-1">Mobile Number / फोन नंबर *</label>
+                            <input type="tel" required placeholder="9162232616" 
+                                   class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-amber-200 mb-1">Guests / लोग</label>
+                            <select class="w-full px-4 py-2.5 rounded-xl bg-brand-dark border border-white/20 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                                <option>2 Guests (Couples)</option>
+                                <option>4-6 Guests (Family)</option>
+                                <option>8-12 Guests (Group)</option>
+                                <option>15+ Guests (Party)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-amber-200 mb-1">Date / तारीख *</label>
+                            <input type="date" required 
+                                   class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-amber-200 mb-1">Time / समय *</label>
+                            <input type="time" required 
+                                   class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-brand-gold hover:bg-amber-400 text-brand-dark font-bold py-3.5 rounded-xl text-base shadow-xl transition transform active:scale-95">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Submit Booking Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white pt-10 pb-6 border-t-4 border-brand-saffron">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-gray-800">
+            <div>
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-brand-gold text-xl border border-brand-gold">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <span class="font-heading text-2xl text-brand-gold">Fouji Dhaba</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    GOOD FOOD • GOOD MOOD • GREAT TIMES
+                    <br>
+                    Daulatpur, NH-27, Opposite Petrol Pump, Dalkhola, Uttar Dinajpur, West Bengal - 733201
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-sm text-amber-400 mb-3 border-b border-gray-700 pb-1">Quick Contact</h4>
+                <p class="text-xs text-gray-300 mb-2"><i class="fa-solid fa-phone text-brand-gold mr-2"></i> +91 9162232616</p>
+                <p class="text-xs text-gray-300 mb-2"><i class="fa-solid fa-phone text-brand-gold mr-2"></i> +91 9199643451</p>
+                <p class="text-xs text-gray-300"><i class="fa-solid fa-envelope text-brand-gold mr-2"></i> faujidhabahotel@gmail.com</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-sm text-amber-400 mb-3 border-b border-gray-700 pb-1">Highlights</h4>
+                <ul class="text-xs text-gray-300 space-y-1">
+                    <li>✓ Authentic Veg & Non-Veg Thalis</li>
+                    <li>✓ Tandoori Starters & Fast Food</li>
+                    <li>✓ Chicken Specials & Biryani</li>
+                    <li>✓ Clean Highway Family Restaurant</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+            <p>© 2026 Fouji Dhaba Cum Family Restaurant (Dalkhola). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl z-50 flex items-center space-x-3 hidden border border-brand-gold">
+        <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+        <span id="toastMsg" class="text-sm font-medium">Message sent successfully!</span>
+    </div>
+
+    <!-- MENU DATA & JAVASCRIPT LOGIC -->
+    <script>
+        const categories = [
+            { id: 'breakfast', titleEn: '01. Breakfast', titleHi: 'नाश्ता' },
+            { id: 'veg_starters', titleEn: '02. Veg Starters', titleHi: 'वेज स्टार्टर्स' },
+            { id: 'daily_dal', titleEn: '03. Daily Items / Dal', titleHi: 'डेली आइटम्स / दाल' },
+            { id: 'beverages', titleEn: '04. Beverages & Water', titleHi: 'बेवरेज व पानी' },
+            { id: 'nonveg_starters', titleEn: '05. Non-Veg Starters', titleHi: 'नॉन-वेज स्टार्टर्स' },
+            { id: 'tandoori_starters', titleEn: '06. Tandoori Starters', titleHi: 'तंदूरी स्टार्टर्स' },
+            { id: 'veg_main', titleEn: '07. Veg Main Course', titleHi: 'वेज मेन कोर्स (Paneer & Mix)' },
+            { id: 'nonveg_tandoori', titleEn: '08. Non-Veg Tandoori Starters', titleHi: 'नॉन-वेज तंदूरी स्टार्टर्स' },
+            { id: 'chicken_specials', titleEn: '12. Chicken Specials', titleHi: 'चिकन स्पेशल' },
+            { id: 'fast_foods', titleEn: '13. Fast Foods', titleHi: 'फास्ट फूड्स' },
+            { id: 'soups', titleEn: '14. Veg Soups', titleHi: 'वेज सूप' },
+            { id: 'salad_papad', titleEn: '15. Salad & Papad', titleHi: 'सलाद और पापड़' },
+            { id: 'rice_biryani', titleEn: '16. Rice & Biryani', titleHi: 'राइस और बिरयानी' },
+            { id: 'thali', titleEn: '17. Thali Specials', titleHi: 'थाली स्पेशल' },
+            { id: 'breads', titleEn: '18. Indian Breads', titleHi: 'इंडियन ब्रेड्स / रोटी' }
+        ];
+
+        const rawMenuItems = [
+            // Category 01: Breakfast
+            { cat: 'breakfast', nameEn: 'Chhola Bhature', nameHi: 'छोला भटूरा', price: 120, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Aloo Paratha', nameHi: 'आलू पराठा', price: 120, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Paneer Paratha', nameHi: 'पनीर पराठा', price: 130, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Puri Sabji', nameHi: 'पूरी सब्जी', price: 100, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Bread Butter Jam', nameHi: 'ब्रेड बटर जाम', price: 100, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Bread Omelette', nameHi: 'ब्रेड ऑमलेट', price: 100, type: 'nonveg' },
+            { cat: 'breakfast', nameEn: 'Boiled Egg', nameHi: 'उबला अंडा', price: 60, type: 'nonveg' },
+            { cat: 'breakfast', nameEn: 'Veg Sandwich', nameHi: 'वेज सैंडविच', price: 80, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Milk Tea', nameHi: 'मिल्क टी / चाय', price: 40, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Milk Coffee', nameHi: 'मिल्क कॉफी', price: 50, type: 'veg' },
+            { cat: 'breakfast', nameEn: 'Hot Milk', nameHi: 'हॉट मिल्क / गर्म दूध', price: 60, type: 'veg' },
+
+            // Category 02: Veg Starters
+            { cat: 'veg_starters', nameEn: 'French Fries', nameHi: 'फ्रेंच फ्राइज', price: 150, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Veg Pakora', nameHi: 'वेज पकोड़ा', price: 160, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Onion Pakora', nameHi: 'प्याज पकोड़ा', price: 150, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Paneer Pakora', nameHi: 'पनीर पकोड़ा', price: 200, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Cheese Pakora', nameHi: 'चीज पकोड़ा', price: 180, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Boiled Veg', nameHi: 'उबली सब्जियां', price: 150, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Corn Pepper Salt', nameHi: 'कॉर्न पेपर साल्ट', price: 280, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Baby Corn Chilly', nameHi: 'बेबी कॉर्न चिली', price: 220, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Mushroom Chilly', nameHi: 'मशरूम चिली', price: 320, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Honey Chilly Potato', nameHi: 'हनी चिली पोटैटो', price: 220, type: 'veg' },
+            { cat: 'veg_starters', nameEn: 'Crispy Chilly Baby Corn', nameHi: 'क्रिस्पी चिली बेबी कॉर्न', price: 280, type: 'veg' },
+
+            // Category 03: Daily Items / Dal
+            { cat: 'daily_dal', nameEn: 'Yellow Dal Fry', nameHi: 'येलो दाल फ्राई', price: 150, type: 'veg' },
+            { cat: 'daily_dal', nameEn: 'Yellow Dal Tadka', nameHi: 'येलो दाल तड़का', price: 160, type: 'veg' },
+            { cat: 'daily_dal', nameEn: 'Dal Handi', nameHi: 'दाल हंडी', price: 190, type: 'veg' },
+            { cat: 'daily_dal', nameEn: 'Black Dal Tadka', nameHi: 'ब्लैक दाल तड़का', price: 170, type: 'veg' },
+            { cat: 'daily_dal', nameEn: 'Dal Tadka with Egg', nameHi: 'दाल तड़का विथ एग', price: 190, type: 'nonveg' },
+            { cat: 'daily_dal', nameEn: 'Dal Makhani', nameHi: 'दाल मखनी', price: 190, type: 'veg' },
+
+            // Category 04: Beverages & Water
+            { cat: 'beverages', nameEn: 'Fresh Lime Water', nameHi: 'ताज़ा नीबू पानी', price: 20, type: 'veg' },
+            { cat: 'beverages', nameEn: 'Fresh Lime Soda', nameHi: 'फ्रेश लाइम सोडा', price: 50, type: 'veg' },
+            { cat: 'beverages', nameEn: 'Cold Drink', nameHi: 'कोल्ड ड्रिंक', price: 60, type: 'veg' },
+            { cat: 'beverages', nameEn: 'Black Coffee', nameHi: 'ब्लैक कॉफी', price: 40, type: 'veg' },
+            { cat: 'beverages', nameEn: 'Cold Coffee', nameHi: 'कोल्ड कॉफी', price: 100, type: 'veg' },
+            { cat: 'beverages', nameEn: 'Lassi', nameHi: 'लस्सी', price: 60, type: 'veg' },
+            { cat: 'beverages', nameEn: 'Chaach', nameHi: 'छाछ', price: 60, type: 'veg' },
+
+            // Category 05: Non-Veg Starters
+            { cat: 'nonveg_starters', nameEn: 'Chicken Dry Fry', nameHi: 'चिकन ड्राई फ्राई', price: 260, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chicken Pakora', nameHi: 'चिकन पकोड़ा', price: 240, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chicken Paperan', nameHi: 'चिकन पेपरन', price: 280, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Crispy Chicken', nameHi: 'क्रिस्पी चिकन', price: 290, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chilly Chicken', nameHi: 'चिली चिकन', price: 250, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Dragon Chicken', nameHi: 'ड्रैगन चिकन', price: 340, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chicken Lollipop', nameHi: 'चिकन लॉलीपॉप', price: 280, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chicken-65', nameHi: 'चिकन-65', price: 260, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chicken Drum\'s of Heaven', nameHi: 'चिकन ड्रम्स ऑफ हेवन', price: 350, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Chicken Manchurian', nameHi: 'चिकन मंचूरियन', price: 320, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Mutton Dry Fry', nameHi: 'मटन ड्राई फ्राई', price: 380, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Fish Fry', nameHi: 'फिश फ्राई', price: 120, type: 'nonveg' },
+            { cat: 'nonveg_starters', nameEn: 'Mutton Chilly', nameHi: 'मटन चिली', price: 290, type: 'nonveg' },
+
+            // Category 06: Tandoori Starters
+            { cat: 'tandoori_starters', nameEn: 'Paneer Tikka', nameHi: 'पनीर टिक्का', price: 350, type: 'veg' },
+            { cat: 'tandoori_starters', nameEn: 'Paneer Malai Tikka', nameHi: 'पनीर मलाई टिक्का', price: 380, type: 'veg' },
+            { cat: 'tandoori_starters', nameEn: 'Paneer Haryali Tikka', nameHi: 'पनीर हरियाली टिक्का', price: 370, type: 'veg' },
+            { cat: 'tandoori_starters', nameEn: 'Mushroom Tikka', nameHi: 'मशरूम टिक्का', price: 350, type: 'veg' },
+            { cat: 'tandoori_starters', nameEn: 'Stuffed Mushroom', nameHi: 'स्टफ्ड मशरूम', price: 380, type: 'veg' },
+            { cat: 'tandoori_starters', nameEn: 'Tandoori Baby Corn', nameHi: 'तंदूरी बेबी कॉर्न', price: 350, type: 'veg' },
+
+            // Category 07: Veg Main Course
+            { cat: 'veg_main', nameEn: 'Paneer Butter Masala', nameHi: 'पनीर बटर मसाला', price: 250, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Shahi Paneer', nameHi: 'शाही पनीर', price: 280, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Kadai Paneer', nameHi: 'कढ़ाई पनीर', price: 260, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Paneer Do-Pyaza', nameHi: 'पनीर दो-प्याज़ा', price: 280, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Matar Paneer', nameHi: 'मटर पनीर', price: 220, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Mushroom Butter Masala', nameHi: 'मशरूम बटर मसाला', price: 280, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Paneer Tikka Masala', nameHi: 'पनीर टिक्का मसाला', price: 350, type: 'veg' },
+            { cat: 'veg_main', nameEn: 'Mix Veg', nameHi: 'मिक्स वेज', price: 180, type: 'veg' },
+
+            // Category 08: Non-Veg Tandoori Starters
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Tikka', nameHi: 'चिकन टिक्का', price: 380, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Reshmi Kabab', nameHi: 'रेशमी कबाब', price: 380, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Haryali Tikka', nameHi: 'चिकन हरियाली टिक्का', price: 340, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Banjara', nameHi: 'चिकन बंजारा', price: 350, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Malai Kabab Tikka', nameHi: 'चिकन मलाई कबाब टिक्का', price: 360, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Lasuni Tikka', nameHi: 'चिकन लसूणी टिक्का', price: 350, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Sheek Kabab', nameHi: 'चिकन सीख कबाब', price: 380, type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Tandoori Chicken (Half / Full)', nameHi: 'तंदूरी चिकन (हाफ / फुल)', price: '350 / 600', type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Desi Tandoori Chicken (Half / Full)', nameHi: 'देसी तंदूरी चिकन (हाफ / फुल)', price: '450 / 800', type: 'nonveg' },
+            { cat: 'nonveg_tandoori', nameEn: 'Chicken Wings', nameHi: 'चिकन विंग्स', price: 600, type: 'nonveg' },
+
+            // Category 12: Chicken Specials
+            { cat: 'chicken_specials', nameEn: 'Chicken Curry', nameHi: 'चिकन करी', price: 250, type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Chicken Kosha', nameHi: 'चिकन कोशा', price: 260, type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Butter Chicken Masala (Half / Full)', nameHi: 'बटर चिकन मसाला (हाफ / फुल)', price: '330 / 600', type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Kadai Chicken', nameHi: 'कढ़ाई चिकन', price: 330, type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Chicken Do-Pyaza', nameHi: 'चिकन दो-प्याज़ा', price: 360, type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Chicken Tikka Masala', nameHi: 'चिकन टिक्का मसाला', price: 380, type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Chicken Changezi', nameHi: 'चिकन चंगेज़ी', price: 432, type: 'nonveg' },
+            { cat: 'chicken_specials', nameEn: 'Chicken Handi (Half / Full)', nameHi: 'चिकन हंडी (हाफ / फुल)', price: '350 / 650', type: 'nonveg' },
+
+            // Category 13: Fast Foods
+            { cat: 'fast_foods', nameEn: 'Veg Chowmein', nameHi: 'वेज चाउमीन', price: 150, type: 'veg' },
+            { cat: 'fast_foods', nameEn: 'Paneer Chowmein', nameHi: 'पनीर चाउमीन', price: 180, type: 'veg' },
+            { cat: 'fast_foods', nameEn: 'Chicken Chowmein', nameHi: 'चिकन चाउमीन', price: 200, type: 'nonveg' },
+            { cat: 'fast_foods', nameEn: 'Mix Chowmein', nameHi: 'मिक्स चाउमीन', price: 220, type: 'nonveg' },
+            { cat: 'fast_foods', nameEn: 'American Chopsi Veg', nameHi: 'अमेरिकन चोपसी वेज', price: 260, type: 'veg' },
+            { cat: 'fast_foods', nameEn: 'Sezwan Veg Rice', nameHi: 'शेज़वान वेज राइस', price: 220, type: 'veg' },
+            { cat: 'fast_foods', nameEn: 'Sezwan Non Veg Rice', nameHi: 'शेज़वान नॉन-वेज राइस', price: 260, type: 'nonveg' },
+            { cat: 'fast_foods', nameEn: 'Paneer Bhurji', nameHi: 'पनीर भुर्जी', price: 240, type: 'veg' },
+
+            // Category 14: Veg Soups
+            { cat: 'soups', nameEn: 'Veg Sweet Corn Soup', nameHi: 'वेज स्वीट कॉर्न सूप', price: 120, type: 'veg' },
+            { cat: 'soups', nameEn: 'Veg Hot & Sour Soup', nameHi: 'वेज हॉट एंड सॉर सूप', price: 130, type: 'veg' },
+            { cat: 'soups', nameEn: 'Veg Manchow Soup', nameHi: 'वेज मनचाउ सूप', price: 130, type: 'veg' },
+            { cat: 'soups', nameEn: 'Veg Clear Soup', nameHi: 'वेज क्लियर सूप', price: 120, type: 'veg' },
+            { cat: 'soups', nameEn: 'Veg Lemon Coriander Soup', nameHi: 'वेज लेमन कोरिएंडर सूप', price: 120, type: 'veg' },
+
+            // Category 15: Salad & Papad
+            { cat: 'salad_papad', nameEn: 'Fry Papad', nameHi: 'फ्राई पापड़', price: 30, type: 'veg' },
+            { cat: 'salad_papad', nameEn: 'Dry Papad', nameHi: 'ड्राई पापड़', price: 30, type: 'veg' },
+            { cat: 'salad_papad', nameEn: 'Masala Salad', nameHi: 'मसाला सलाद', price: 50, type: 'veg' },
+            { cat: 'salad_papad', nameEn: 'Green Salad', nameHi: 'ग्रीन सलाद', price: 80, type: 'veg' },
+            { cat: 'salad_papad', nameEn: 'Cucumber Salad', nameHi: 'ककड़ी / खीरा सलाद', price: 60, type: 'veg' },
+
+            // Category 16: Rice & Biryani
+            { cat: 'rice_biryani', nameEn: 'Steam Rice', nameHi: 'स्टीम राइस / सादा चावल', price: 80, type: 'veg' },
+            { cat: 'rice_biryani', nameEn: 'Jeera Rice', nameHi: 'जीरा राइस', price: 120, type: 'veg' },
+            { cat: 'rice_biryani', nameEn: 'Veg Fried Rice', nameHi: 'वेज फ्राइड राइस', price: 180, type: 'veg' },
+            { cat: 'rice_biryani', nameEn: 'Veg Sheczwan Fried Rice', nameHi: 'वेज शेज़वान फ्राइड राइस', price: 220, type: 'veg' },
+            { cat: 'rice_biryani', nameEn: 'Veg Pulao', nameHi: 'वेज पुलाव', price: 180, type: 'veg' },
+            { cat: 'rice_biryani', nameEn: 'Egg Fried Rice', nameHi: 'एग फ्राइड राइस', price: 220, type: 'nonveg' },
+            { cat: 'rice_biryani', nameEn: 'Kashmiri Pulao', nameHi: 'कश्मीरी पुलाव', price: 210, type: 'veg' },
+            { cat: 'rice_biryani', nameEn: 'Chicken Fried Rice', nameHi: 'चिकन फ्राइड राइस', price: 260, type: 'nonveg' },
+            { cat: 'rice_biryani', nameEn: 'Chicken Fried Sheczwan Rice', nameHi: 'चिकन फ्राइड शेज़वान राइस', price: 350, type: 'nonveg' },
+            { cat: 'rice_biryani', nameEn: 'Mix Fried Rice', nameHi: 'मिक्स फ्राइड राइस', price: 320, type: 'nonveg' },
+            { cat: 'rice_biryani', nameEn: 'Chicken Biryani', nameHi: 'चिकन बिरयानी', price: 280, type: 'nonveg' },
+            { cat: 'rice_biryani', nameEn: 'Mutton Biryani', nameHi: 'मटन बिरयानी', price: 320, type: 'nonveg' },
+
+            // Category 17: Thali
+            { cat: 'thali', nameEn: 'Special Veg Thali', nameHi: 'स्पेशल वेज थाली', price: 200, type: 'veg' },
+            { cat: 'thali', nameEn: 'Veg Thali', nameHi: 'वेज थाली', price: 150, type: 'veg' },
+            { cat: 'thali', nameEn: 'Chicken Thali', nameHi: 'चिकन थाली', price: 220, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Special Chicken Thali', nameHi: 'स्पेशल चिकन थाली', price: 300, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Mutton Thali', nameHi: 'मटन थाली', price: 260, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Special Mutton Thali', nameHi: 'स्पेशल मटन थाली', price: 350, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Egg Thali', nameHi: 'एग थाली', price: 180, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Special Egg Thali', nameHi: 'स्पेशल एग थाली', price: 240, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Fish Thali', nameHi: 'फिश थाली', price: 200, type: 'nonveg' },
+            { cat: 'thali', nameEn: 'Special Fish Thali', nameHi: 'स्पेशल फिश थाली', price: 260, type: 'nonveg' },
+
+            // Category 18: Indian Breads
+            { cat: 'breads', nameEn: 'Tandoori Roti', nameHi: 'तंदूरी रोटी', price: 20, type: 'veg' },
+            { cat: 'breads', nameEn: 'Tandoori Butter Roti', nameHi: 'तंदूरी बटर रोटी', price: 30, type: 'veg' },
+            { cat: 'breads', nameEn: 'Plain Naan', nameHi: 'प्लेन नान', price: 50, type: 'veg' },
+            { cat: 'breads', nameEn: 'Butter Naan', nameHi: 'बटर नान', price: 60, type: 'veg' },
+            { cat: 'breads', nameEn: 'Garlic Naan', nameHi: 'गारलिक नान', price: 80, type: 'veg' },
+            { cat: 'breads', nameEn: 'Cheese Naan', nameHi: 'चीज़ नान', price: 100, type: 'veg' },
+            { cat: 'breads', nameEn: 'Cheese Butter Naan', nameHi: 'चीज़ बटर नान', price: 120, type: 'veg' },
+            { cat: 'breads', nameEn: 'Masala Kulcha', nameHi: 'मसाला कुलचा', price: 120, type: 'veg' },
+            { cat: 'breads', nameEn: 'Lachha Paratha', nameHi: 'लच्छा पराठा', price: 50, type: 'veg' },
+            { cat: 'breads', nameEn: 'Tawa Roti', nameHi: 'तवा रोटी', price: 15, type: 'veg' },
+            { cat: 'breads', nameEn: 'Butter', nameHi: 'बटर', price: 20, type: 'veg' }
+        ];
+
+        let selectedCategory = 'all';
+        let selectedType = 'all';
+
+        function renderMenu() {
+            const container = document.getElementById('menuContainer');
+            const searchVal = document.getElementById('menuSearch').value.toLowerCase();
+
+            // Filter raw items first
+            let filteredItems = rawMenuItems.filter(item => {
+                const matchesSearch = item.nameEn.toLowerCase().includes(searchVal) || item.nameHi.toLowerCase().includes(searchVal);
+                const matchesType = (selectedType === 'all') || (item.type === selectedType);
+                const matchesCat = (selectedCategory === 'all') || (item.cat === selectedCategory);
+                return matchesSearch && matchesType && matchesCat;
+            });
+
+            if (filteredItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500 bg-amber-50 rounded-2xl border border-amber-200">
+                        <i class="fa-solid fa-utensils text-4xl text-amber-400 mb-2"></i>
+                        <p class="font-bold text-gray-700">No matching dishes found / कोई डिश नहीं मिली</p>
+                        <p class="text-xs text-gray-500">Try searching with another name or filter.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Group filtered items by categories
+            let htmlContent = '';
+
+            categories.forEach(category => {
+                const itemsInCat = filteredItems.filter(item => item.cat === category.id);
+
+                if (itemsInCat.length > 0) {
+                    htmlContent += `
+                        <div class="bg-gray-50/60 rounded-2xl p-4 sm:p-6 border border-amber-100 shadow-sm">
+                            <div class="flex items-center justify-between border-b-2 border-brand-gold pb-3 mb-4">
+                                <h3 class="text-lg sm:text-xl font-bold font-heading text-brand-red flex items-center">
+                                    <span class="w-3 h-3 rounded-full bg-brand-saffron inline-block mr-2"></span>
+                                    ${category.titleEn} <span class="text-sm font-sans font-normal text-gray-600 ml-2">(${category.titleHi})</span>
+                                </h3>
+                                <span class="text-xs font-semibold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">${itemsInCat.length} Items</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                                ${itemsInCat.map(item => `
+                                    <div class="bg-white p-3.5 rounded-xl border border-gray-200 hover:border-brand-saffron/40 shadow-xs hover:shadow-md transition flex items-center justify-between">
+                                        <div class="space-y-0.5 pr-2">
+                                            <div class="flex items-center space-x-1.5">
+                                                <span class="w-3 h-3 rounded-full border border-gray-300 flex items-center justify-center p-[2px] flex-shrink-0">
+                                                    <span class="w-full h-full rounded-full ${item.type === 'veg' ? 'bg-green-600' : 'bg-red-600'}"></span>
+                                                </span>
+                                                <h4 class="font-bold text-gray-900 text-sm sm:text-base leading-tight">${item.nameEn}</h4>
+                                            </div>
+                                            <p class="text-xs text-brand-saffron font-medium pl-4">${item.nameHi}</p>
+                                        </div>
+                                        <div class="text-right flex-shrink-0">
+                                            <span class="text-brand-red font-extrabold text-base sm:text-lg">
+                                                ${typeof item.price === 'number' ? '₹' + item.price : '₹' + item.price}
+                                            </span>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            container.innerHTML = htmlContent;
+        }
+
+        // Filter Category Function
+        function setCategory(catId) {
+            selectedCategory = catId;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white', 'shadow');
+                btn.classList.add('bg-gray-100', 'text-gray-800');
+            });
+
+            const activeBtn = document.getElementById(`cat-${catId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-gray-100', 'text-gray-800');
+                activeBtn.classList.add('bg-brand-red', 'text-white', 'shadow');
+            }
+            renderMenu();
+        }
+
+        // Filter Veg / Non-Veg Type Function
+        function setTypeFilter(type) {
+            selectedType = type;
+            document.querySelectorAll('.type-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-dark', 'text-white', 'bg-green-600', 'bg-red-600');
+                btn.classList.add('bg-white');
+            });
+
+            const activeBtn = document.getElementById(`type-${type}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white');
+                activeBtn.classList.add('bg-brand-dark', 'text-white');
+            }
+            renderMenu();
+        }
+
+        // Mobile Nav Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Form Submit Handler
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            showToast("आपकी टेबल बुकिंग का अनुरोध सफलतापूर्वक भेजा गया है!");
+            e.target.reset();
+        }
+
+        // Toast Handler
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.textContent = msg;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        // Initial Load
+        window.onload = function() {
+            renderMenu();
+        };
+    </script>
+</body>
+</html>
